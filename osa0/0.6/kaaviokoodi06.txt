@@ -1,0 +1,19 @@
+title Muistiinpanon lisääminen (spa)
+
+selain->selain: Nappaa palvelimelle menevä HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note over selain:
+selain luo uuden muistiinpanon ja lisää sen näytettävälle listalle
+end note
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän
+joka renderöi muistiinpanot (myös äsken lisätyn) näytölle
+end note
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+
+note over palvelin:
+palvelin tallentaa selaimelta tulleen muistiinpanon
+end note
+
+palvelin-->selain: 201 Created
