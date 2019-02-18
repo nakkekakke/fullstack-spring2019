@@ -1,0 +1,23 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRva2VuLXVzZXIiLCJpZCI6IjVjNmIxOWIzNWYwNjJmNDEzYmVlMWYzOCIsImlhdCI6MTU1MDUyMjgzNH0.t_BcrpopLoe_6sUEavYUzAvi9A9WkdHjgwRXKkwLk4M
+
+{
+  "title": "Jonnen Blogi",
+  "author": "Jonne Jokunen",
+  "url": "https://www.jonnenblogi.fi",
+  "likes": 0
+}
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Jonkun Blogi",
+  "author": "Jonku Jänkä",
+  "url": "https://www.jonkunblogi.fi",
+  "likes": 150,
+  "userId": "5c6b161d7348ed3d9bc63668"
+}

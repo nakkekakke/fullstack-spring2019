@@ -1,0 +1,9 @@
+PUT http://localhost:3003/api/blogs/5c66fd320836c26bf8a14cc8
+Content-Type: application/json
+
+{
+  "title": "Annen uusi blogi",
+  "author": "Anne Jokinen",
+  "url": "https://www.uusi.annenblogi.fi",
+  "likes": 10
+}
