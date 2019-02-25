@@ -12,20 +12,24 @@ blogsRouter.get('/', (req, res) => {
 })
 
 blogsRouter.post('/', async (req, res) => {
+  console.log('postataan', req.body)
   const body = req.body
   try {
+    if (!req.token) {
+      return res.status(401).json({ error: 'No token present in request!' })
+    }
     const decodedToken = jwt.verify(req.token, process.env.SECRET)
-    if (!token || !decodedToken.id) {
+    if (!decodedToken.id) {
       return res.status(401).json({ error: 'Token missing or invalid' })
     }
 
     const user = await User.findById(decodedToken.id)
-
+    console.log('user', user)
     const blog = new Blog({
       title: body.title,
       author: body.author,
       url: body.url,
-      likes: body.likes === undefined ? 0 : body.likes,
+      likes: body.likes ? body.likes : 0,
       user: user._id
     })
 
@@ -41,21 +45,20 @@ blogsRouter.post('/', async (req, res) => {
 blogsRouter.delete('/:id', async (req, res) => {
   try {
     const decodedToken = jwt.verify(req.token, process.env.SECRET)
-    if (!token || !decodedToken.id) {
+    if (!decodedToken.id) {
       return res.status(401).json({ error: 'Token missing or invalid' })
     }
 
-    const user = await User.findById(decodedToken.id)
-
     const blog = await Blog.findById(req.params.id)
 
-    console.log('hei', blog.user.toString())
-    console.log('hoi', user._id.toString())
-
-    // await Blog.findByIdAndDelete(req.params.id)
-    // res.status(204).end()
+    if (blog.user.toString() === decodedToken.id) {
+      await Blog.findByIdAndDelete(req.params.id)
+      res.status(204).end()
+    } else {
+      res.status(404).end()
+    }
   } catch (exception) {
-    res.status(404).send(exception.message)
+    res.status(401).send(exception.message)
   }
 })
 

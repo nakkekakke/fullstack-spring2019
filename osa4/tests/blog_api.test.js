@@ -108,7 +108,7 @@ describe('When there is initially one user in the database', async () => {
     expect(usernames).toContain(newUser.username)
   })
 
-  describe.only('creation fails with', async () => {
+  describe('creation fails with', async () => {
     test('non-unique username and gives correct response', async () => {
       const usersAtStart = await helper.usersInDb()
   
