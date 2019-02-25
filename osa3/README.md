@@ -1,0 +1,1 @@
+Osa 3 löytyy [täältä](https://github.com/nakkekakke/fullstack-spring2019-part3)
