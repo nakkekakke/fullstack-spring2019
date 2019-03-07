@@ -1,15 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { 
-  voteAnecdote,
-  createNotification
-} from '../actions'
+import { voteAnecdote, createNotification } from '../actions'
 
 const AnecdoteList = (props) => {
   const vote = (id) => {
-    props.voteAnecdote(id)
-    const voted = props.visibleAnecdotes.find(a => a.id === id)
-    props.createNotification(`You voted '${voted.content}'`, 5)
+    const anecdote = props.visibleAnecdotes.find(a => a.id === id)
+    props.voteAnecdote(anecdote)
+    props.createNotification(`You voted '${anecdote.content}'`, 5)
   }
 
   return (

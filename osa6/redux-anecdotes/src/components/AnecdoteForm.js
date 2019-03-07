@@ -1,10 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { 
-  createAnecdote,
-  createNotification,
-  destroyNotification
-} from '../actions'
+import { createAnecdote, createNotification } from '../actions'
 
 const AnecdoteForm = (props) => {
 

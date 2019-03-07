@@ -13,20 +13,9 @@ const createNew = async (content) => {
   return res.data
 }
 
-const vote = async (id) => {
-  try {
-    const found = await axios.get(`${baseUrl}/${id}`)
-    const res = await axios.put(`${baseUrl}/${id}`,
-      {
-        ...found.data,
-        votes: found.data.votes + 1
-      }
-    )
-    return res.data
-  } catch (exception) {
-    console.log(exception)
-    return null
-  }
+const update = async (anecdote) => {
+  const res = await axios.put(`${baseUrl}/${anecdote.id}`, anecdote)
+  return res.data
 }
 
-export default { getAll, createNew, vote }
+export default { getAll, createNew, update }

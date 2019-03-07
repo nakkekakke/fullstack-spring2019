@@ -8,12 +8,13 @@ export const DESTROY_NOTIFICATION = 'DESTROY_NOTIFICATION'
 export const UPDATE_FILTER = 'UPDATE_FILTER'
 
 
-export const voteAnecdote = id => {
+export const voteAnecdote = anecdote => {
   return async dispatch => {
-    await anecdoteService.vote(id)
+    const voted = { ...anecdote, votes: anecdote.votes + 1 }
+    const data = await anecdoteService.update(voted)
     dispatch({
       type: VOTE_ANECDOTE,
-      id
+      data
     })
   }
 }
@@ -35,6 +36,7 @@ export const initializeAnecdotes = () => {
       type: INIT_ANECDOTES,
       data: anecdotes
     })
+    createNotification('Welcome!', 5)
   }
 }
 

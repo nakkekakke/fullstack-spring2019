@@ -4,8 +4,8 @@ const reducer = (state = [], action) => {
   switch (action.type) {
     case VOTE_ANECDOTE:
       return state.map(anecdote =>
-        anecdote.id === action.id
-          ? { ...anecdote, votes: anecdote.votes + 1 }
+        anecdote.id === action.data.id
+          ? action.data
           : anecdote
       )
     case NEW_ANECDOTE:
