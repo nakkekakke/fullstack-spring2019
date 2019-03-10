@@ -1,0 +1,23 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRva2VuLXVzZXIiLCJpZCI6IjVjNmIxOWIzNWYwNjJmNDEzYmVlMWYzOCIsImlhdCI6MTU1MDg2OTY2M30.tvmjE5Bnz7RNZHAz8bd26Ijnn0xmop0LIQMfyfXHlV4
+
+{
+  "title": "Nikon blogi",
+  "author": "Niko Juntunen",
+  "url": "https://www.nikonblogi.fi",
+  "likes": 1
+}
+
+###
+
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Jonkun Blogi",
+  "author": "Jonku Jänkä",
+  "url": "https://www.jonkunblogi.fi",
+  "likes": 150,
+  "userId": "5c6b161d7348ed3d9bc63668"
+}
