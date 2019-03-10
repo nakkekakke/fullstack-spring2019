@@ -36,7 +36,6 @@ export const initializeAnecdotes = () => {
       type: INIT_ANECDOTES,
       data: anecdotes
     })
-    createNotification('Welcome!', 5)
   }
 }
 
@@ -44,8 +43,7 @@ const createId = () => (100000 * Math.random()).toFixed(0)
 
 export const createNotification = (text, time) => {
   const id = createId()
-  console.log(id)
-  return async dispatch => {
+  return dispatch => {
     dispatch({
       type: CREATE_NOTIFICATION,
       id,
